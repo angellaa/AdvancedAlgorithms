@@ -10,7 +10,7 @@ namespace ConnectivityProblem
 
         const int MinN = 10;
         const int MaxN = 100000000;
-        const UnionFind.Type Type = UnionFind.Type.QuickUnionPathCompression;
+        const UnionFind.Type Type = UnionFind.Type.WeightedQuickUnionPathCompression;
 
         static void Main()
         {
@@ -47,6 +47,7 @@ namespace ConnectivityProblem
                 Console.WriteLine();
             }
 
+            Console.WriteLine("\nEnd");
             Console.ReadKey();
         }
 
