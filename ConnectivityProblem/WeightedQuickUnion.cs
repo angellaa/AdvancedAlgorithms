@@ -10,7 +10,7 @@ namespace ConnectivityProblem
         public WeightedQuickUnion(int n)
         {
             parent = Enumerable.Range(0, n).ToArray();
-            size = new int[n];
+            size = Enumerable.Repeat(1, n).ToArray();
         }
 
         public bool AreConnected(int p, int q)
@@ -25,15 +25,15 @@ namespace ConnectivityProblem
 
             if (rootP == rootQ) return;
 
-            if (size[p] < size[q])
+            if (size[rootP] < size[rootQ])
             {
                 parent[rootP] = rootQ;
-                size[q] += size[p];
+                size[rootQ] += size[rootP];
             }
             else
             {
                 parent[rootQ] = rootP;
-                size[p] += size[q];
+                size[rootP] += size[rootQ];
             }
         }
 
