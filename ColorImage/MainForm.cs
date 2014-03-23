@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ColorImage.Properties;
 using ConnectivityProblem;
 
 namespace ColorImage

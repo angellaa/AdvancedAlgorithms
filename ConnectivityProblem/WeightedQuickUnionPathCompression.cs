@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ConnectivityProblem
 {
@@ -56,9 +57,11 @@ namespace ConnectivityProblem
         {
             int pRoot = Root(p);
 
-            for (int i = 0; i < parent.Length; i++)
+            Parallel.For(0, parent.Length, i =>
+            {
                 if (Root(i) == pRoot)
                     action(i);
+            });
         }
     }
 }
