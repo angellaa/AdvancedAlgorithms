@@ -6,12 +6,12 @@ namespace ConnectivityProblem
     public class WeightedQuickUnionPathCompression : IUnionFind
     {
         private readonly int[] parent;
-        private readonly int[] size;
+        private readonly byte[] height;
 
         public WeightedQuickUnionPathCompression(int n)
         {
             parent = Enumerable.Range(0, n).ToArray();
-            size = Enumerable.Repeat(1, n).ToArray();
+            height = Enumerable.Repeat((byte)1, n).ToArray();
         }
 
         public bool AreConnected(int p, int q)
@@ -26,15 +26,18 @@ namespace ConnectivityProblem
 
             if (rootP == rootQ) return;
 
-            if (size[rootP] < size[rootQ])
+            if (height[rootP] < height[rootQ])
             {
                 parent[rootP] = rootQ;
-                size[rootQ] += size[rootP];
+            }
+            else if (height[rootP] > height[rootQ])
+            {
+                parent[rootQ] = rootP;
             }
             else
             {
                 parent[rootQ] = rootP;
-                size[rootP] += size[rootQ];
+                height[rootP]++;
             }
         }
 
